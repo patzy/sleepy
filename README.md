@@ -3,6 +3,8 @@ Sleepy
 
 Notmuch mail REST API and web interface.
 
+Webmail isn't included in the python server, you'll need a web server for it.
+
 This is a proof of concept and full of problems.
 Issues are disabled as I won't work on this anymore.
 Fork this and write proper remote notmuch support !
@@ -12,6 +14,8 @@ Authentication code has been adapted from [flask-jwt](https://github.com/mattups
 Sendmail code has been adapted from [flask-sendmail](https://github.com/ajford/flask-sendmail).
 
 Also peeked at [alot](https://github.com/pazz/alot) for some functionalities.
+
+Thanks to [lu6fer](https://github.com/lu6fer) for helping me through angular dev.
 
 Dependencies
 ------------
