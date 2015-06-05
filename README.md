@@ -3,11 +3,27 @@ Sleepy
 
 Notmuch mail REST API and web interface.
 
+This is a proof of concept and full of problems.
+Issues are disabled as I won't work on this anymore.
+Fork this and write proper remote notmuch support !
+
+Authentication code has been adapted from [flask-jwt](https://github.com/mattupstate/flask-jwt).
+Sendmail code has been adapted from [flask-sendmail](https://github.com/ajford/flask-sendmail).
+Also peeked at [alot](https://github.com/pazz/alot) for some functionalities.
+
 Dependencies
 ------------
 
+Requirements:
+
 - python 2.x
-- flask
+- [Flask](http://flask.pocoo.org/)
+- [notmuch](http://notmuchmail.org) and its python bindings
+
+Optional:
+
+- [bower](http://bower.io/) for js dependencies
+- some working sendmail command on the computer running the REST server
 
 Quick start
 -----------
