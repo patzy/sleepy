@@ -8,7 +8,9 @@ Issues are disabled as I won't work on this anymore.
 Fork this and write proper remote notmuch support !
 
 Authentication code has been adapted from [flask-jwt](https://github.com/mattupstate/flask-jwt).
+
 Sendmail code has been adapted from [flask-sendmail](https://github.com/ajford/flask-sendmail).
+
 Also peeked at [alot](https://github.com/pazz/alot) for some functionalities.
 
 Dependencies
