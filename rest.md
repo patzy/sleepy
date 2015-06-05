@@ -6,52 +6,67 @@ All entries required authentication unless specified.
 `/auth`
 ------
 POST
+
     {
      "username": username,
      "password": password
     }
 
 returns
+
     {"id_token": jwt_token}
 
 `/infos`
 -------
 no_auth
+
 GET
+
 returns
+
     {"timezone": timezone,
      "api_version": version}
      
 `/stats`
 --------
 GET
+
 returns
+
     {"thread_count": count,
      "message_count": count}
      
 `/tags`
 -------
 GET
+
 returns
+
     {"count": number of tags,
      "tags": list of tags}
      
 `/attachments/<message_id>/<attachment_id>`
 ------------------------------------------
 GET
+
 returns
+
     {"download_token": jwt download token}
 
 `/downloads/<download_token>`
 -----------------------------
 GET
+
 returns
+
     attachment data or 410/404/401
 
 `/messages/<message_id>`
 -----------------------
 GET
+
 returns
+
     {"headers": message headers,
      "body": recusrive message body content,
      "id": message id,
@@ -61,7 +76,9 @@ returns
 `/threads/<thread_id>`
 ---------------------
 GET
+
 returns
+
     {"id": thread id,
      "count": number of messages,
      "authors": authors list,
@@ -75,10 +92,14 @@ returns
 `/search/threads/<search_query>?limit=xxx&offset=xxx`
 -------------------------------
 GET
+
 parameters
+
     limit: maximum number of results to return
     offset: start index of first result returned
+
 returns
+
     {"threads": [{"id": thread id,
                   "count": number of messages,
                   "authors": authors list,
@@ -94,10 +115,14 @@ returns
 `/search/messages/<search_query>?limit=xxx&offset=xxx`
 --------------------------------
 GET
+
 parameters
+
     limit: maximum number of results to return
     offset: start index of first result returned
+
 returns
+
     {"messages": [{"id": thread id,
                    "date": unix timestamp,
                    "thread": thread id,
@@ -113,30 +138,39 @@ returns
 `/count/<search_query>`
 ----------------------
 GET
+
 returns
+
     {"thread_count": query thread count,
      "message_count": query message count}
 
 `/retag`
 --------
 POST
+
     {"add_tags": list of tags to add,
      "remove_tags": list of tags to remove (true to remove all),
      "search": search query to retag,
      "sync_maildir": synchronize maildir flags on retag (true/false)}
+
 returns
+
     {"status": "ok"} or 500
 
 `/accounts`
 ----------
 GET
+
 returns
+
     {"accounts": list of user accounts as in sleepy.cfg}
 
 `/contacts`
 ----------
 GET
+
 returns
+
     {"contacts": list of contacts using configured contact_query}
     each contact is as follow:
     {display name: list of addresses}
@@ -144,6 +178,7 @@ returns
 `/sendmail`
 ----------
 POST
+
     {"account": sender account index,
      "message": {"subject": message subject,
                  "sender": message sender,
@@ -159,4 +194,5 @@ POST
     }
     
 returns
+
     {"status": "ok"} or 500
