@@ -45,6 +45,7 @@ SleepyApp.config(function Config($httpProvider, jwtInterceptorProvider) {
     $httpProvider.interceptors.push('jwtInterceptor');
 })
 
+
 SleepyApp.config([
     '$stateProvider',
     '$urlRouterProvider',
@@ -58,9 +59,6 @@ SleepyApp.config([
                     'navbar@':{
                         templateUrl: 'templates/navbar.html'
                     },
-                    'footer@': {
-                        templateUrl: 'templates/footer.html'
-                    }
                 }
             })
             .state('home.tags', {
