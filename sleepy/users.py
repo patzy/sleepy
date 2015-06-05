@@ -100,9 +100,8 @@ class User(object):
         return self.notmuch_db
     def update_contacts(self):
         self.contact_cache = dict()
-        search_query = ' or '.join(['from:'+x['address'] for x in self.accounts])
-        if self.contact_query:
-            search_query += " or ("+self.contact_query+")"
+        if not self.contact_query: return
+        search_query = self.contact_query
         print "contact search_query: %s"%search_query
         msg_list = self.db().search_messages(search_query,as_list=False)
         for m in msg_list:
