@@ -198,7 +198,7 @@ def do_retag():
     if current_user.db().retag(search_str,add_list,remove_list,sync_maildir):
         return jsonify({"status": "ok"})
     else:
-        return jsonify({"status": "error"})
+        abort(500)
 
 @app.route('/accounts',methods=['GET','OPTIONS'])
 @crossdomain(origin='*',headers=['Content-type','Authorization'])
@@ -222,9 +222,10 @@ import sendmail
 @jwt_required(user_handler)
 def do_sendmail():
     data = request.get_json(force=True)
-    msg = sendmail.Message(**data)
-    if sendmail.send(msg) == 0:
+    account_id = data.get("account",None)
+    send_cmd = current_user.get_sendmail_cmd(account_id)
+    msg = sendmail.Message(**data.get('message'))
+    if sendmail.send(send_cmd,msg) == 0:
         return jsonify({"status": "ok"})
     else:
-        return jsonify({"status": "error",
-                        "status_code": -1})
+        abort(500)

@@ -2,9 +2,6 @@ from subprocess import PIPE, STDOUT, Popen
 from email.mime.text import MIMEText
 import sys
 
-MAILER="/usr/sbin/sendmail"
-MAILER_FLAGS="-t"
-
 class Message(object):
     def __init__(self, subject=None,sender=None,body=None,charset=None,
                  html=None,cc=None,bcc=None,reply_to=None,references=None,
@@ -78,12 +75,14 @@ class Message(object):
         else:
             return msg_str
 
-def send(message):
-    sm = Popen([MAILER, MAILER_FLAGS], stdin=PIPE,
+def send(command,message):
+    args = command.split()
+    print "Sending message with command %s"%args
+    sm = Popen(args, stdin=PIPE,
                stdout=PIPE, stderr=STDOUT)
     sm.stdin.write(message.dump())
     sm.communicate()
     return sm.returncode
 
-def send_message(self, *args, **kwargs):
-    send(Message(*args, **kwargs))
+def send_message(command, *args, **kwargs):
+    send(command,Message(*args, **kwargs))

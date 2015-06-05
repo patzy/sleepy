@@ -83,13 +83,19 @@ class NotmuchDBManager:
 class User(object):
     def __init__(self, **kwargs):
         self.contact_query = None
+        self.sendmail_command = "/usr/sbin/sendmail -t"
         self.accounts = list()
         for k, v in kwargs.items():
             setattr(self, k, v)
         self.notmuch_db = NotmuchDBManager(self.notmuch_path)
         self.attachment_cache = dict()
         self.contact_cache = dict()
-        self.contact_last_update = None
+        self.update_contacts()
+    def get_send_cmd(self,index=None):
+        cmd = self.sendmail_command
+        if index != None and index >= 0 and index < len(self.accounts):
+            cmd = self.accounts[index].get('sendmail_command',cmd)
+        return cmd
     def db(self):
         return self.notmuch_db
     def update_contacts(self):
@@ -112,10 +118,8 @@ class User(object):
                             self.contact_cache[it[1]] = list()
                         if it[0] and not it[0] in self.contact_cache[it[1]]:
                             self.contact_cache[it[1]].append(it[0])
+        print "Found %d contact"%len(self.contact_cache)
     def retrieve_contacts(self):
-        if self.contact_last_update == None:
-            self.update_contacts()
-        print self.contact_cache.keys()
         return self.contact_cache
 
 def init_users(user_list):
