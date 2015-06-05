@@ -1,0 +1,90 @@
+
+.content {
+    margin-top: 50px;
+/*    padding-top: 10px; */
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+}
+
+.content-header {
+    /*    margin-top: 60px;*/
+    margin-top: 0px;
+    padding-top: 0px;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    background-color: #B2B2B2;
+    background: solid;
+    z-index: 10;
+}
+
+.content-body {
+    margin-top: 60px;
+    padding-top: 10px;
+}
+
+.content-body-full {
+    padding-top: 10px;
+}
+
+.label {
+    display: inline-block;
+    margin-right: 1px   ;
+}
+
+.panel-default >.panel-heading {
+    background-color: silver;
+}
+
+@media (min-width:768px){
+
+  .navbar-default .navbar-nav > li:first-child {
+    border-left:1px solid #fff;
+   }
+
+  .navbar-inverse .navbar-nav > li:first-child {
+    border-left:1px solid #444;
+   }  
+
+
+}
+
+ul.unstyled, ol.unstyled {
+    /* margin-left: 0px;*/
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.tree, ul.tree ul {
+    list-style-type: none;
+    background: url(img/vline.png) repeat-y;
+    margin: 0;
+    padding: 0;
+}
+   
+ul.tree > li {
+    margin: 0;
+    padding-left: 10px;
+    line-height: 20px;
+    background: url(img/node.png) no-repeat scroll;
+}
+
+ul.tree > li:last-child {
+    background: #fff url(img/lastnode.png) no-repeat;
+}
+
+.panel-thread {
+    margin: 2px;
+    margin-left: 0px;
+    background-color: #E6E6E6;
+}
+
+
+.select2 > .select2-choice.ui-select-match {
+    height:29px;
+}
+
+.selectize-control > .selectize-dropdown {
+    top:36px;
+}

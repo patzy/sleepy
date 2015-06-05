@@ -1,0 +1,46 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header navbar-left">
+            <a class="navbar-brand" href="#">SleepyWeb</a>
+        </div>
+        <form class="navbar-form navbar-left" role="search"
+              ng-controller="searchInputController">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search"
+                   ng-model="searchFact.currentSearch">
+          </div>
+          <button type="submit" class="btn btn-default glyphicon glyphicon-search"
+                  ui-sref="home.search({search_str: searchFact.currentSearch})">
+          </button>
+        </form>
+        <ul class="nav navbar-nav navbar-left">
+          <li><a ui-sref-active="active"
+                 ui-sref="home.compose()">
+              Compose
+            </a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-left">
+          <li><a ui-sref-active="active"
+                 ui-sref="home.tags()">
+              All tags
+            </a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-left"
+            ng-controller="searchFolderController">
+          <li ng-repeat="folder in folder_list">
+            <a ui-sref-active="active"
+               ui-sref="home.search({search_str: folder.search})">
+              {{folder.name}} <span class="badge">{{folder.thread_count}}</span>
+            </a>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a>
+              {{Login}}
+            </a>
+          </li>
+        </ul>
+    </div>
+</nav>

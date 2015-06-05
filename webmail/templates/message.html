@@ -1,0 +1,70 @@
+<li class="tree">
+
+        <div class="row panel panel-default panel-thread"
+             ng-click="toggleMessage()" style="cursor:pointer;">
+          <span class="small"><i>{{msg.parsed_from.name || msg.parsed_from.address}}</i></span>
+          <span class="small"><b>{{msg.subject}}</b></span>
+          <span class="small">({{ msg.date*1000 | date:'dd/MM/yyyy HH:mm:ss'}})</span>
+          <div ng-repeat="tag in msg.tags" class="span label label-default"
+               style="float: right;"
+               ng-class="{'label-danger': tag == 'unread', 'label-primary': tag == 'inbox',
+                        'label-warning': tag == 'flagged', 'label-info': tag == 'killed',
+                        'label-success': tag == 'archive'}">
+            {{tag}}
+          </div>
+        </div>
+      <div collapse="msg.collapsed"
+           style="margin-left:10px;">
+        <div ng-controller="msgRetagController"
+               class="btn-group">
+            <button type="button" class="btn btn-default btn-xs"
+                    ng-repeat="retag in retag_list"
+                    ng-click="doRetag(msg,retag)"
+                    style="cursor:pointer;">
+              {{retag.name}}
+            </button>
+        </div>
+        <div ng-controller="msgHeaderController">
+          <div class="btn-group" dropdown is-open="status.isopen"
+               ng-show="msg.collectedAtts && (msg.collectedAtts.length != 0)">
+          <button type="button" class="btn btn-primary btn-xs dropdown-toggle"
+                    dropdown-toggle ng-disabled="disabled">
+              Attachments<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li ng-repeat="att in msg.collectedAtts">
+                <a ng-click="downloadAttachment(att)"
+                   style="cursor:pointer;">
+                  {{att.att_id}}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <button class="btn btn-default btn-xs" ng-click="detailsCollapsed = !detailsCollapsed">
+            Toggle details
+          </button>
+          <button class="btn btn-default btn-xs" ng-click="showEmbedded(msg)"
+                  ng-show="hasEmbedded(msg) && !embeddedShown">
+            Show embedded
+          </button>
+          <button class="btn btn-default btn-xs" ng-click="doReply()">
+            Reply
+          </button>
+
+          <div collapse="detailsCollapsed">
+            <div class="small" ng-repeat="(key, value) in msg.headers">
+              {{key}}: {{value}}
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div>
+          <div ng-hide="msg.collectedContent">
+            Loading...
+          </div>
+          <div ng-repeat="content in msg.collectedContent" ng-if="content">
+            <p class="small" ng-bind-html="content.trusted"></p>
+          </div>
+        </div>
+
+</li>

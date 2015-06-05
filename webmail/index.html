@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <title>Sleepy</title>
+    <link href="vendor/bootstrap-css-only/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/angular/angular-csp.css" rel="stylesheet">
+    <link href="vendor/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet">
+    <link href="vendor/font-awsome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/angular-ui-select/dist/select.css" rel="stylesheet">
+    <link href="css/sleepy.css" rel="stylesheet">
+</head>
+<body ng-app="sleepy" ng-controller="main">
+
+  <div class="wrap">
+    <div ui-view="navbar"></div>
+
+    <div class="container-fluid content">
+      <div ui-view="content"></div>
+    </div>
+
+    <!-- <div ui-view="footer"></div> -->
+  </div>
+
+  <!-- Vendor -->
+  <script type="application/javascript" src="vendor/angular/angular.js"></script>
+  <script type="application/javascript" src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script type="application/javascript" src="vendor/angular-animate/angular-animate.js"></script>
+  <script type="application/javascript" src="vendor/angular-sanitize/angular-sanitize.js"></script>
+  <script type="application/javascript" src="vendor/angular-ui-router/release/angular-ui-router.js">
+  </script>
+  <script type="application/javascript" src="vendor/angular-jwt/dist/angular-jwt.js"></script>
+  <script type="application/javascript" src="vendor/email-addresses/lib/email-addresses.js"></script>
+  <script type="application/javascript" src="vendor/angular-ui-select/dist/select.js"></script>
+ 
+  <!-- App JS -->
+  <script type="application/javascript" src="js/sleepy.js"></script>
+  <script type="application/javascript" src="js/config.js"></script>
+  <script type="application/javascript" src="js/sleepy/routes.js"></script>
+  <script type="application/javascript" src="js/sleepy/controllers/mainController.js"></script>
+  <script type="application/javascript" src="js/sleepy/services/tagsFactory.js"></script>
+  <script type="application/javascript" src="js/sleepy/services/searchFactory.js">    </script>
+  <script type="application/javascript" src="js/sleepy/services/threadFactory.js">    </script>
+  <script type="application/javascript" src="js/sleepy/services/messageFactory.js">    </script>
+  <script type="application/javascript" src="js/sleepy/controllers/tagsController.js"></script>
+  <script type="application/javascript" src="js/sleepy/controllers/searchController.js"></script>
+  <script type="application/javascript" src="js/sleepy/controllers/threadController.js"></script>
+  <script type="application/javascript" src="js/sleepy/controllers/msgHeaderController.js"></script>
+  <script type="application/javascript" src="js/sleepy/controllers/searchInputController.js"></script>
+  <script type="application/javascript" src="js/sleepy/controllers/searchFolderController.js"></script>
+  <script type="application/javascript" src="js/sleepy/controllers/msgRetagController.js"></script>
+  <script type="application/javascript" src="js/sleepy/controllers/threadRetagController.js"></script>
+  <script type="application/javascript" src="js/sleepy/controllers/searchRetagController.js"></script>
+  <script type="application/javascript" src="js/sleepy/controllers/composeController.js"></script>
+
+</body>
+</html>

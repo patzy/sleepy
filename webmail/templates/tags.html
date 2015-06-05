@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-12 content-header">
+    Showing {{ntags}} tags.
+  </div>
+</div>
+
+<div class="content-body">
+  <div class="list-group">
+    <a class="list-group-item" ui-sref-active="active"
+       ng-repeat="(tag_name, stats) in tags_list"
+       ui-sref="home.search({search_str: 'tag:'+tag_name})">
+      {{tag_name}}
+      <span class="badge">{{stats.thread_count}}</span>
+      <span class="badge">{{stats.msg_count}}</span>
+    </a>
+  </div>
+</div>

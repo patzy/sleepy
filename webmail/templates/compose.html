@@ -1,0 +1,82 @@
+<div class="content">
+
+  <form class="form-horizontal">
+
+    <div class="input-group">
+      <span class="input-group-addon">From:</span>
+      <ui-select ng-required ng-model="sender.selected">
+        <ui-select-match placeholder="Select sender">
+          {{$select.selected.name || $select.selected.address}}
+        </ui-select-match>
+        <ui-select-choices
+     repeat="recip in from_addresses | propsFilter: {name: $select.search,address: $select.search}">
+          <div>
+            {{recip.name || "(No name)"}}
+            <div class="small">email: {{recip.address}}</div>
+          </div>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-addon">To:</span>
+      <ui-select multiple tagging="parseContact" ng-model="recipients.selected">
+        <ui-select-match placeholder="Select recipient">
+          {{$item.name || $item.address}}
+        </ui-select-match>
+        <ui-select-choices
+           repeat="recip in contacts | propsFilter: {name: $select.search,address: $select.search}">
+          <div>
+            {{recip.name || "(No name)"}}
+            <div class="small">email: {{recip.address}}</div>
+          </div>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-addon">Cc:</span>
+      <ui-select multiple tagging="parseContact" ng-model="copies.selected">
+        <ui-select-match placeholder="Select recipient">
+          {{$item.name || $item.address}}
+        </ui-select-match>
+        <ui-select-choices
+           repeat="recip in contacts | propsFilter: {name: $select.search,address: $select.search}">
+          <div>
+            {{recip.name || "(No name)"}}
+            <div class="small">email: {{recip.address}}</div>
+          </div>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-addon">BCc:</span>
+      <ui-select multiple tagging="parseContact" ng-model="blind_copies.selected">
+        <ui-select-match placeholder="Select recipient">
+          {{$item.name || $item.address}}
+        </ui-select-match>
+        <ui-select-choices
+           repeat="recip in contacts | propsFilter: {name: $select.search,address: $select.search}">
+          <div>
+            {{recip.name || "(No name)"}}
+            <div class="small">email: {{recip.address}}</div>
+          </div>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-addon">Subject:</span>
+      <input type="text" class="form-control ng-pristine ng-valid ng-touched"
+             aria-describedby="basic-addon1" ng-model="subject">
+    </div>
+
+    <textarea class="form-control ng-pristine ng-untouched ng-valid"
+              rows="4" ng-model="body" placeholder="Enter message here">
+    </textarea>
+    <button type="submit" class="btn btn-primary" ng-click="send()">Send</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+  </form>
+  
+</div>
