@@ -91,7 +91,7 @@ class User(object):
         self.attachment_cache = dict()
         self.contact_cache = dict()
         self.update_contacts()
-    def get_send_cmd(self,index=None):
+    def get_sendmail_cmd(self,index=None):
         cmd = self.sendmail_command
         if index != None and index >= 0 and index < len(self.accounts):
             cmd = self.accounts[index].get('sendmail_command',cmd)

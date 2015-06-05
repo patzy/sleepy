@@ -36,7 +36,9 @@ SleepyApp.controller('composeController', [
         console.log("StateParams:",$stateParams);
         $scope.ref_msg = $stateParams.msg;
         $scope.reply_all = $stateParams.reply_all;
+        $scope.send_status = "";
         $scope.send = function() {
+            var account_id = $scope.sender.selected.id;
             var sender = $scope.sender.selected;
             sender = sender.name + " <"+sender.address+">";
             var recipients = $scope.recipients.selected.map(function(item) {
@@ -48,12 +50,17 @@ SleepyApp.controller('composeController', [
             var blind_copies = $scope.blind_copies.selected.map(function(item) {
                 return item.name+" <"+item.address+">";
             });
-            messageFactory.send(sender,
+            messageFactory.send(account_id,
+                                sender,
                                 recipients,
                                 copies,
                                 blind_copies,
                                 $scope.subject,$scope.body)
                 .success(function(resp) {
+                    $scope.send_status = "Message sent";
+                })
+                .error(function(resp) {
+                    $scope.send_status = "Failed to send message";
                 });
         }
         messageFactory.getAccounts()
@@ -65,6 +72,7 @@ SleepyApp.controller('composeController', [
                     var acc = $scope.accounts[i];
                     console.log(acc);
                     $scope.from_addresses.push({"name": acc.name || "",
+                                                "id": i,
                                                 "address": acc.address || ""});
                 }
                 console.log($scope.from_addresses);

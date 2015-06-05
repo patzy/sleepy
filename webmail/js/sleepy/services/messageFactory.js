@@ -14,15 +14,16 @@ SleepyApp.factory('messageFactory', [
             return $http.get(api_url+"/contacts");
         }
         
-        messageFact.send = function(from,recipients,copies,blind_copies,subject,body) {
+        messageFact.send = function(account_id,from,recipients,copies,blind_copies,subject,body) {
             return $http.post(api_url + "/sendmail",
-                              {"sender": from,
-                               "recipients": recipients,
-                               "cc": copies,
-                               "bcc": blind_copies,
-                               "subject": subject,
-                               "body": body
-                             })
+                              {"account": account_id,
+                               "message": {"sender": from,
+                                           "recipients": recipients,
+                                           "cc": copies,
+                                           "bcc": blind_copies,
+                                           "subject": subject,
+                                           "body": body
+                                          }})
                 .error(function(error) {
                     console.log(error);
                 });

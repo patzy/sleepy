@@ -1,7 +1,8 @@
 SleepyApp.factory('tagsFactory', [
     '$http',
     'api_url',
-    function($http, api_url) {
+    'sync_maildir',
+    function($http, api_url, sync_maildir) {
         var tagsFact = {};
 
         tagsFact.getAll = function() {
@@ -17,7 +18,7 @@ SleepyApp.factory('tagsFactory', [
                               {"search": search_str,
                                "add_tags": add_list,
                                "remove_tags": remove_list,
-                               "sync_maildir": true})
+                               "sync_maildir": sync_maildir})
                 .error(function(error) {
                     console.log(error);
                 });

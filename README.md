@@ -38,18 +38,19 @@ Each user entry is a dict with the following fields:
 
 - `username`
 - `password` (clear text)
-- `notmuch_path`: path to the notmuch database of the user
+- `notmuch_path`: path to the notmuch database of the user (absolute path)
 - `contact_query`: additional query for contact retrieval
 Final contact query is an OR of all accounts FROM addresses and the contact_query field.
+- `sendmail_command`: default sendmail command to use
 - `accounts`: list of user mail accounts
 
 Each account entry is a dict with the following fields:
 
 - `name`: user display name
 - `address`: from email address
+- `sendmail_command`: sendmail command to use for the account
 
 Webmail configuration
 ---------------------
 
-Webmail configuration is located in `webmail/js/config.js`.
-
+Webmail configuration is located in `webmail/js/config.js`, should be clear reading the comments.

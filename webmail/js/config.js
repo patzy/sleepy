@@ -2,7 +2,10 @@
 SleepyApp.constant('api_url', 'http://localhost:3000');
 
 // mark thread as read when viewing
-SleepyApp.constant('auto_read',true);
+SleepyApp.constant('auto_read',false);
+
+// sync tags to maildir flags on retag
+SleepyApp.constant('sync_maildir',true);
 
 // special tags from http://notmuchmail.org/special-tags/
 // will retrieve message count for these tags in "All Tags" page
