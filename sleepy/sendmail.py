@@ -67,7 +67,10 @@ class Message(object):
         if self.reply_to:
             msg['Reply-To'] = self.reply_to
         if self.references:
-            msg['References'] = self.references
+            if hasattr(self.references, '__iter__'):
+                msg['References'] = " ".join(self.references)
+            else:
+                msg['References'] = self.references
 
         msg_str = msg.as_string()
         if sys.version_info >= (3,0) and isinstance(msg_str, str):
